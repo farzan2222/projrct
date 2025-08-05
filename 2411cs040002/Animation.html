@@ -1,0 +1,39 @@
+<html>
+<head>
+<style>
+.box{
+height:200px;
+width:200px;
+margin:80;
+padding:50;
+border-radius:50%;
+background-color:lightgray;
+position:relative;
+animation: box 4s infinite alternate;
+
+}
+
+@keyframes box{
+from {left: 0; }
+to {left: 200px; }
+from{transform:rotate(0deg);}
+to { transform: rotate(360deg);}
+
+
+
+0% { background-color: red;}
+50% { background-color: yellow; }
+100% { background-color: red;}
+}
+
+</style>
+
+<title>Animation</title>
+</head>
+<body>
+<div class="box"  >
+
+</div>
+
+</body>
+</html>

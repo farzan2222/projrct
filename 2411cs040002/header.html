@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fetch api</title>
+<h1 id='c1'>code loading...</h1>
+<h1 id='pid'>product id loading...</h1>
+<script>
+let d1={
+  id: 23,
+  name:"farzan"
+};
+
+fetch('https://jsonplaceholder.typicode.com/users',{
+method:'POST',
+headers:{
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(d1)
+  
+})
+.then(response=>{
+if(responce.ok){return response.json();}
+else{throw new Error('Network responce not done');}
+})
+.then(data=>{
+document.getElementById('c1').innerText = `code: ${data.id}`;
+document.getElementById('pid').innerText =` Product id: ${data.name}`;
+})
+.catch(error=>{
+console.log('Error:',error);});
+</script>
+</head>
+<body> 
+
+</body>
+</html>

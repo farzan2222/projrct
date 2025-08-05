@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class</title>
+<script>
+
+class Person {
+constructor(name, age) {
+this.name = name;
+this.age = age;
+}
+greet() {
+console.log("Welcome to world of ",this.name);
+}
+}
+class Teacher extends Person {
+constructor(name, sub) {
+super(name) ;
+this.sub = sub;
+}
+teac() {
+console.log("Welcome to class of",this.name ,"i will teach you",this.sub);
+}
+}
+const p1 = new Person("farzan", 20);
+const p2 = new Teacher("faraz","hello")
+p1.greet();
+p2.teac();
+
+</script>
+</head>
+<body>
+</body>
+</html>

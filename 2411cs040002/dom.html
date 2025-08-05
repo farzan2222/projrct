@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>DOM</title>
+</head>
+<body>
+<h1>Dom sturture</h1>
+
+<p id= "para"> The Document Object Model (DOM) is a programming interface for web documents</p>
+<p>The DOM is a tree-like representation of a webpage's structure</p>
+<p class="sel">  where each element, attribute, and text node is a node in the tree. </p>
+<h1 class="sel"> it creates a DOM representation of that page. </h1>
+<h2>This DOM is then accessible to JavaScript</h2>
+
+<script>
+
+document.getElementById("para").innerText = "Paragraph text changed using innerText!";
+
+document.getElementByTagName("p");
+document.getElementByTagClassName("sel");
+document.queryselector();
+
+</script>
+
+</body>
+</html>

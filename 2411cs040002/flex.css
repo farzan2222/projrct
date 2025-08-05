@@ -1,0 +1,27 @@
+.f{
+display:flex;
+background-color:lightgreen;
+color:yellow;
+flex-direction: row;
+padding:15px;
+border:20px solid pink;
+margin:10x;
+justify-content:center;
+gap: 15px;
+
+}
+.item{
+background-color:green;
+color:red;
+padding:15px;
+border:10px solid red;
+margin:25px;
+text-align:center;
+font-size:30px;
+font-family:Algerian;
+align-item:center;
+flex-wrap: wrap;
+/*flex-grow:20;*/
+flex-shrink:15;
+flex-basis:150px;
+}

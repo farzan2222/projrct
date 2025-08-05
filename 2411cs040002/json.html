@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>json to js</title>
+<h2 id='todo'>Loading...</h2>
+  <script>
+      const jsondata = '{ "userId": 1, "userName": " Mohd farzan" }';
+      const y=JSON.parse(jsondata);
+      document.getElementById('todo').innerText =` ID: ${y.userId}, Name: ${y.userName}`;
+ </script>
+</head>
+<body>
+  
+</body>
+</html>

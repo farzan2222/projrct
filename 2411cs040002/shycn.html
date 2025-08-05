@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async..</title>
+</head>
+<body>
+
+<button onclick="Hi()">Click Me</button>
+
+<script>
+console.log("Hello from JS!");
+async function Hi() {
+console.log("Waiting...");
+await new Promise(resolve => setTimeout(resolve, 3000)); 
+console.log("Hello Iam from CyberSecurity!");
+console.log("Hello Iam student of MRUH !");
+
+  }
+console.log("Hello from MallaReddy University!");
+</script>
+
+</body>
+</html>

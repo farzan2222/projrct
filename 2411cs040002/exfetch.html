@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fetch api</title>
+<h1 id='todo'>loading...</h1>
+<script>
+
+fetch('https://api.potterdb.com/')
+.then(response=>response.json())
+.then(data=>{
+document.getElementById('todo').innerText =` message: ${data.message}`;
+})
+.catch(error=>{
+console.log('Error:',error);});
+</script>
+</head>
+<body> 
+
+</body>
+</html>

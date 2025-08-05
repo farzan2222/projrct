@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API PUT</title>
+</head>
+
+<body>
+    <p id="result">Sending data...</p>
+    <script>
+        const newUser = {
+            id:1,
+            title: "Using PUT method",
+            price: 500
+        };
+
+        fetch('https://fakestoreapi.com/products/1', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        }).then(response => response.json()).then(data => {
+            document.getElementById('result').innerText = ` User created with ID: ${data.id}`;
+            console.log('Response: ', data);
+        }).catch(error => {
+            document.getElementById('result').innerText = 'Error sending data.';
+            console.error('Error: ', error);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async..</title>
+</head>
+<body>
+
+<button onclick="showMessage()">Click Me</button>
+<p id="demo"></p>
+
+
+<script>
+function showMessage() {
+ document.getElementById("demo").innerText = "please wait...";
+ setTimeout(function() {
+document.getElementById("demo").innerText = "Thanks for waiting!";
+},500);
+}
+</script>
+
+</body>
+</html>
+

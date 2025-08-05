@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Image Hover</title>
+</head>
+<body>
+<center>
+<img id="hoverImage" src="2024.jpg" alt="Hover me!" width="300">
+
+<script>
+  const img = document.getElementById("hoverImage");
+
+  img.addEventListener("mouseover", () => {
+    img.src = "far.jpeg"; // Image to show on hover
+  });
+
+img.addEventListener("mouseout", () => {
+    img.src = "zan.jpeg"; // Original image
+  });
+</script>
+</center>
+</body>
+</html>

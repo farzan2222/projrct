@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checkNumber(num){
+            return new Promise((resolve,reject) => {
+                if(num>0){
+                    resolve("The number is positive");
+                }else{
+                    reject("The number is not positive");
+                }
+
+            });
+        }
+        checkNumber(5 )
+        .then(message => console.log("Success:",message))
+        .catch(error => console.log("Error:",error));
+    </script>
+</body>
+</html>

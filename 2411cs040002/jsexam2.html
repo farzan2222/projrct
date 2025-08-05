@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Responsive Profile Card Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card-form {
+      background-color: lightgray;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px gray;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-form input,
+    .card-form textarea,
+    .card-form select,
+    .card-form button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid gray;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .card-form button {
+      background-color: skyblue;
+      color: white;
+      cursor: pointer;
+    }
+
+    .card-form button:hover {
+      background-color: blue;
+    }
+
+    .card-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background-color: lightgray;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px gray;
+      text-align: center;
+      width: 100%;
+      max-width: 250px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      animation: fadeScaleIn 1s ease forwards;
+      box-sizing: border-box;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card.dark {
+      background-color: black;
+      color: white;
+    }
+
+    @keyframes fadeScaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      margin-bottom: 10px;
+      transition: opacity 0.3s ease;
+    }
+
+    .square img { border-radius: 0; }
+    .rounded img { border-radius: 10px; }
+    .circle img { border-radius: 50%; }
+
+    .theme-buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .theme-buttons button {
+      padding: 5px 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    .light-btn { background-color: gray; }
+    .dark-btn { background-color: black; }
+
+    @media (max-width: 500px) {
+      .card-form,
+      .card {
+        padding: 15px;
+      }
+
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-form">
+    <input type="text" id="name" placeholder="Your Name" />
+    <textarea id="bio" placeholder="Your Bio"></textarea>
+    <input type="file" id="imageUpload" accept="image/*" />
+    <input type="file" id="hoverImageUpload" accept="image/*" />
+    <select id="borderStyle">
+      <option value="square">Square</option>
+      <option value="rounded">Rounded</option>
+      <option value="circle">Circle</option>
+    </select>
+    <button onclick="generateCard()">Create Card</button>
+  </div>
+
+  <div class="card-container" id="cardContainer"></div>
+
+  <script>
+    function generateCard() {
+      const name = document.getElementById('name').value;
+      const bio = document.getElementById('bio').value;
+      const style = document.getElementById('borderStyle').value;
+      const imageInput = document.getElementById('imageUpload');
+      const hoverImageInput = document.getElementById('hoverImageUpload');
+      const cardContainer = document.getElementById('cardContainer');
+
+      cardContainer.innerHTML = '';
+
+      const card = document.createElement('div');
+      card.className = `card ${style}`;
+
+      const img = document.createElement('img');
+      let normalSrc = '';
+      let hoverSrc = '';
+
+      const file = imageInput.files[0];
+      const hoverFile = hoverImageInput.files[0];
+
+      if (file) {
+        const reader1 = new FileReader();
+        reader1.onload = function(e) {
+          normalSrc = e.target.result;
+          img.src = normalSrc;
+        };
+        reader1.readAsDataURL(file);
+      }
+
+      if (hoverFile) {
+        const reader2 = new FileReader();
+        reader2.onload = function(e) {
+          hoverSrc = e.target.result;
+        };
+        reader2.readAsDataURL(hoverFile);
+      }
+
+      img.addEventListener('mouseover', () => {
+        if (hoverSrc) img.src = hoverSrc;
+      });
+
+      img.addEventListener('mouseout', () => {
+        if (normalSrc) img.src = normalSrc;
+      });
+
+      const nameElem = document.createElement('h2');
+      nameElem.textContent = name;
+
+      const bioElem = document.createElement('p');
+      bioElem.textContent = bio;
+
+      const themeButtons = document.createElement('div');
+      themeButtons.className = 'theme-buttons';
+
+      const lightBtn = document.createElement('button');
+      lightBtn.className = 'light-btn';
+      lightBtn.textContent = 'Light';
+      lightBtn.onclick = () => card.classList.remove('dark');
+
+      const darkBtn = document.createElement('button');
+      darkBtn.className = 'dark-btn';
+      darkBtn.textContent = 'Dark';
+      darkBtn.onclick = () => card.classList.add('dark');
+
+      themeButtons.appendChild(lightBtn);
+      themeButtons.appendChild(darkBtn);
+
+      card.appendChild(img);
+      card.appendChild(nameElem);
+      card.appendChild(bioElem);
+      card.appendChild(themeButtons);
+
+      cardContainer.appendChild(card);
+
+      document.getElementById('name').value = '';
+      document.getElementById('bio').value = '';
+      document.getElementById('imageUpload').value = '';
+      document.getElementById('hoverImageUpload').value = '';
+      document.getElementById('borderStyle').value = 'square';
+    }
+  </script>
+</body>
+</html>

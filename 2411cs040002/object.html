@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>object</title>
+</head>
+<body>
+<script>
+const marks = [2,4,6,8,10];const reduc = marks.reduce((acc,cur) => acc+cur,0);
+console.log(reduc);
+
+let obj = {name:"farzan",age:19,gender:"male",};
+console.log(obj);
+
+  const student = {
+    gender: "male",
+    college: {
+      branch: "cs",
+      collegename: "MRUH",
+      year: '2025'
+    }
+  };
+
+  console.log(student.year);
+  console.log(student.college.collegename);
+
+console.log(obj.name);
+console.log(obj["age"]);
+console.log(obj.gender);
+
+for(let key in obj){
+
+console.log(key,obj[key])
+}
+let info = new Object();
+info.name = "faraz";
+info.age = 21;
+info.gender = "male";
+console.log(info);
+
+</script>
+
+</body>
+</html>

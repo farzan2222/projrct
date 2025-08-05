@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example Of Fetch</title>
+<body>
+
+<div id="user"></div>
+
+<script>
+fetch('https://randomuser.me/api/')
+  .then(res => res.json())
+  .then(data => {
+    const u = data.results[0];
+    document.getElementById('user').innerHTML = `
+      <p>Name: ${u.name.first} ${u.name.last}</p>
+      <p>Gender: ${u.gender}</p>
+      <p>Email: ${u.email}</p>
+      <p>Country: ${u.location.country}</p>
+    `;
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+<style>
+.A p::first-line{
+font-size:150%;
+color:red;
+}
+
+li:first-child{
+font-size:150%;
+color:blue;
+}
+
+
+
+li:nth-child(3){
+font-size:150%;
+color:red;
+}
+
+li:nth-child(2){
+font-size:150%;
+color:purple;
+}
+li:only-child{
+font-size:150%;
+color:orange;
+}
+
+li:last-child{
+font-size:150%;
+color:blue;
+}
+
+input:focus {
+background-color:lightblue;
+}
+
+input:checked+label{
+color:red;
+}
+a:visited {
+color:blue;
+}
+a:hover{
+color: orange;
+text-decoration: underline;
+}
+
+.A p::before{
+content:"hello";
+}
+
+.A p::after{
+content:"hello";
+}
+
+.A{
+background-color:lightgray;
+}
+
+
+</style>
+<title>pseudo element</title>
+</head>
+<body>
+<div class="A">
+<ol>
+<li>Banana</li>
+<li>Apple</li>
+<li>Mango</li>
+<li>grapes</li>
+</ol>
+
+<ul>
+<li>Only item in this list (purple)</li>
+</ul>
+</div>
+<h2>2.<i> Link Pseudo-classes</i></h2>
+<a href="https://www.mallareddyuniversity.ac.in/">MALLAREDDY UNIVERSITY</a><br><br>
+<form>
+<input type="text" placeholder="Focus me"><br><br>
+<input type="text" placeholder="show me"><br><br>
+<input type="checkbox" id="check1">
+<label for="check1">Check me </label> <br> <br>
+
+</body>
+</html>

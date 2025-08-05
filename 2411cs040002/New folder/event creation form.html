@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Creation Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:lightgray;
+      padding: 20px;
+    }
+    form {
+      background: lavender;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background:gray;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background:blue;
+    }
+
+
+  </style>
+</head>
+<body>
+<center>
+  <h2><b>Create Event</b></h2>
+</center>
+  <form id="eventForm">
+    <label>Event Title:</label>
+    <input type="text" id="title" name="title">
+    <div class="error" id="errorTitle"></div>
+
+    <label>Event Date & Time:</label>
+    <input type="datetime-local" id="dateTime" name="dateTime">
+    <div class="error" id="errorDateTime"></div>
+
+    <label>Description:</label>
+    <textarea id="description" name="description" rows="4"></textarea>
+    <div class="error" id="errorDescription"></div>
+
+    <label>Email for Reminder:</label>
+    <input type="email" id="email" name="email">
+    <div class="error" id="errorEmail"></div>
+
+    <label>Event Category / Type:</label>
+    <select id="category" name="category">
+      <option value="">-- Select Category --</option>
+      <option value="Conference">Conference</option>
+      <option value="Meeting">Meeting</option>
+      <option value="Workshop">Workshop</option>
+      <option value="Birthday">Birthday</option>
+    </select>
+    <div class="error" id="errorCategory"></div>
+
+    <button type="submit" style="margin-top:15px;">Create Event</button>
+  </form>
+
+  <script>
+    document.getElementById("eventForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // stop actual form submission
+      let isValid = true;
+
+      // Clear all errors first
+      document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+      const title = document.getElementById("title").value.trim();
+      const dateTime = document.getElementById("dateTime").value;
+      const description = document.getElementById("description").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const category = document.getElementById("category").value;
+
+      if (title === "") {
+        document.getElementById("errorTitle").textContent = "Title is required.";
+        isValid = false;
+      }
+
+      if (dateTime === "") {
+        document.getElementById("errorDateTime").textContent = "Date and time are required.";
+        isValid = false;
+      }
+
+      if (description === "") {
+        document.getElementById("errorDescription").textContent = "Description is required.";
+        isValid = false;
+      }
+
+      if (email === "") {
+        document.getElementById("errorEmail").textContent = "Email is required.";
+        isValid = false;
+      } else if (!/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById("errorEmail").textContent = "Enter a valid email.";
+        isValid = false;
+      }
+
+      if (category === "") {
+        document.getElementById("errorCategory").textContent = "Please select a category.";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert("Event Created Successfully!");
+      
+        document.getElementById("eventForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

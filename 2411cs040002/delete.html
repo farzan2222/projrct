@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch Product Information</title>
+  </head>
+  <body>
+    <h2>FETCH ITEMS</h2>
+    <p id="result"></p>
+
+    <script>
+      let newUser={
+        name:"FARZAN",
+        email:"FARZAN@1234.com",
+      }
+
+      fetch('https://jsonplaceholder.typicode.com/users/1', {
+  method: 'DELETE'
+})
+  .then(response => {
+    if (response.ok) {
+      console.log('User deleted successfully');
+    } else {
+      console.log('Failed to delete user');
+    }
+  })
+  .catch(error => console.log(error));
+
+      </script>
+      </body>
+</html>

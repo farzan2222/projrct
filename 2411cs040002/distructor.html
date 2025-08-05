@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>distructor</title>
+</head>
+<body>
+
+  <script>
+    function Person(name) {
+      this.name = name;
+
+      this.destroy = function() {
+        this.name = null;
+      };
+    }
+
+    let p = new Person("farzan");
+
+    document.write("Name: " + p.name + "<br>");
+
+    p.destroy(); // clear the object
+
+    document.write("After destroy: " + p.name);
+  </script>
+
+</body>
+</html>
